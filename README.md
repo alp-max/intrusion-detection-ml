@@ -45,5 +45,5 @@ After splitting data into training and testing sets, I trained the models with t
 - Normal and PortScan traffic were easy to classify, while BotAttack was the hardest to detect.
 
 ## How to Run
-- Open the notebook `01_phase1_classification.ipynb` in Google Colab or Jupyter.  
+- Open the notebook `classification.ipynb` in Google Colab or Jupyter.  
 - Run all cells to reproduce preprocessing, training, and evaluation results.
