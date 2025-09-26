@@ -43,3 +43,7 @@ After splitting data into training and testing sets, I trained the models with t
 - Removing the `Intrusion` column was critical to avoid data leakage.  
 - Random Forest outperformed KNN by capturing more BotAttack cases.  
 - Normal and PortScan traffic were easy to classify, while BotAttack was the hardest to detect.
+
+### How to Run
+When prompted in Colab, upload the dataset file `Network_logs.csv`.  
+The notebook will then load the data and run preprocessing, training, and evaluation.
