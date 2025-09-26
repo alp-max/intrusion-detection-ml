@@ -25,3 +25,25 @@ Finally, the target variable, 'Scan_Type' was label-encoded, anf each class had 
 After the preprocessing, I split the dataset into training (80%) and testing (20%) using train_test_split function. This was an important step in order to ensure that the distribution of classes (Normal, PortScan and BotAttack) remained consistent across both training and testing sets. With this splitting, there were 7076 training samples, and 1770 testing samples, with each having 14 features consisting of 2 numeric features and 12 one-hot encoded categorical features.
 
 # Training the data 
+After splitting data into training and testing sets, I trained the models with two different ML Models: **K-Nearest Neigbours (KNN)** and **Random Forest**. The KNN model was chosen as a simple baseline that classifies each sample based on the majority label among its closest neighbors. With k=5, it achieved high overall accuracy (~99%) but struggled with detecting minority classes, as seen in its BotAttack recall score of 0.83. To address the imbalance, I also trained a Random Forest classifier with 300 trees and class weighting enabled. This model not only maintained ~99% accuracy but also improved recall for BotAttacks to 0.93, making it more reliable for intrusion detection. The Random Forest also provided better generalization compared to KNN, particularly for rare events.
+
+# Evaluation
+**K-Nearest Neighbors (KNN, k=5)**  
+- Accuracy: ~99%  
+- BotAttack recall: 0.83  
+- Struggled with minority class detection.  
+
+**Random Forest (300 trees, class_weight="balanced")**  
+- Accuracy: ~99%  
+- BotAttack recall: 0.93  
+- Performed better on minority classes and provided more robust predictions.
+
+## Key Insights
+- Accuracy alone can be misleading in imbalanced datasets.  
+- Removing the `Intrusion` column was critical to avoid data leakage.  
+- Random Forest outperformed KNN by capturing more BotAttack cases.  
+- Normal and PortScan traffic were easy to classify, while BotAttack was the hardest to detect.
+
+## How to Run
+- Open the notebook `01_phase1_classification.ipynb` in Google Colab or Jupyter.  
+- Run all cells to reproduce preprocessing, training, and evaluation results.
